@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>My Web</title>
+  <title>Hidden View Web</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <style>
@@ -12,8 +12,8 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: Arial, sans-serif;
       background: #000;
+      font-family: Arial, sans-serif;
     }
 
     .wrapper {
@@ -28,28 +28,25 @@
       border: none;
     }
 
-    /* Kotak penutup */
-    .overlay {
+    /* Kotak penutup visual (klik tembus) */
+    .cover {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent; /* ganti misal rgba(0,0,0,0.2) kalau mau agak gelap */
+      inset: 0;
+      background: #000; /* hitam penuh, web di balik tidak kelihatan */
+      opacity: 0.85;    /* ubah 0.1 - 1 sesuai mau seberapa ketutup */
       z-index: 10;
+      pointer-events: none; /* <<< ini bikin klik tetap masuk ke iframe */
     }
 
-    /* Contoh teks di atas overlay */
-    .label {
+    .text {
       position: absolute;
-      top: 15px;
-      left: 15px;
       z-index: 11;
-      background: rgba(0,0,0,0.6);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 14px;
+      font-size: 22px;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -58,8 +55,8 @@
   <div class="wrapper">
     <iframe src="https://chrissayangadel.pterostore.my.id"></iframe>
 
-    <div class="overlay"></div>
-    <div class="label">Web Viewer</div>
+    <div class="cover"></div>
+    <div class="text">Tampilan disembunyikan</div>
   </div>
 
 </body>
